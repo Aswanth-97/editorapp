@@ -1,0 +1,36 @@
+February 20th, 2026 at 	 5:39 PM	69465123-a652-4819-ace0-218429b0245e	ReferenceError	re is not defined
+February 20th, 2026 at 	 8:29 PM	4e433580-cc30-4734-8e01-aafc9cbbbd5c	Error	Not allowed by CORS
+February 20th, 2026 at 	 8:29 PM	84da6a64-2a0b-4a03-9a05-35ee8cf0ae91	Error	Not allowed by CORS
+February 26th, 2026 at 	 8:19 AM	55467614-ddd1-4867-83d2-cc6b442c37de	Error	Not allowed by CORS
+February 26th, 2026 at 	 8:20 AM	0a668454-9f99-4ee6-81b0-cabf370b2e29	Error	Not allowed by CORS
+February 26th, 2026 at 	 8:20 AM	3bd0701a-7f8f-49f5-8c79-a1b92fa79654	Error	Not allowed by CORS
+February 26th, 2026 at 	 8:21 AM	99b949fa-f83a-44ec-9a1b-f8b21c955fb8	Error	Not allowed by CORS
+March 1st, 2026 at 	 11:35 PM	75af9c93-216a-4203-9179-e1805e3e3de6	TypeError	res.sentStatus is not a function
+March 2nd, 2026 at 	 1:37 PM	68d21dc1-e97f-4a78-aa8d-2575a11ca1e1	TypeError	Cannot destructure property 'userName' of 'req.body' as it is undefined.
+March 2nd, 2026 at 	 1:38 PM	b36ffc76-32de-46b5-8141-7c3950683679	TypeError	Cannot destructure property 'userName' of 'req.body' as it is undefined.
+March 2nd, 2026 at 	 1:39 PM	78df0f92-6bca-4302-abe5-fc94e1a34521	TypeError	Cannot destructure property 'userName' of 'req.body' as it is undefined.
+March 2nd, 2026 at 	 1:40 PM	b6576b3f-fd27-4a14-9342-5ec34bf31e2a	TypeError	Cannot destructure property 'userName' of 'req.body' as it is undefined.
+March 2nd, 2026 at 	 1:40 PM	a9a379ba-ee58-4c05-8269-1a7a21fd6c61	TypeError	Cannot destructure property 'userName' of 'req.body' as it is undefined.
+March 2nd, 2026 at 	 2:22 PM	63eec464-0547-4301-9da8-fce97ea9a839	Error	Cannot set headers after they are sent to the client
+March 2nd, 2026 at 	 2:22 PM	59c326a0-de68-4a05-831f-c4400b4a0dfa	Error	Cannot set headers after they are sent to the client
+March 2nd, 2026 at 	 3:01 PM	76c04f7f-78c6-4924-a76f-61658f009687	Error	Can't set headers after they are sent.
+March 2nd, 2026 at 	 6:31 PM	9770146c-c32a-4aa0-8bfb-8af044e536b6	TypeError	Cannot read properties of undefined (reading 'findOne')
+March 2nd, 2026 at 	 6:31 PM	0af2ad2d-053f-405a-8b24-db8ae92ef435	TypeError	user.findOne is not a function
+March 2nd, 2026 at 	 6:33 PM	48b3e68a-ebb2-4255-9545-010e6a18eba6	TypeError	user.findOne is not a function
+March 2nd, 2026 at 	 6:34 PM	b7f8953e-93f4-47f1-ad9d-9641ac7e21fe	TypeError	Cannot read properties of undefined (reading 'findOne')
+March 2nd, 2026 at 	 6:35 PM	d955dd0a-dc16-41af-a445-31e5c261b252	TypeError	user.findOne is not a function
+March 2nd, 2026 at 	 6:38 PM	f00d0f36-fda1-497d-a6d3-4c6757aa330a	TypeError	Cannot read properties of undefined (reading 'findOne')
+March 2nd, 2026 at 	 6:38 PM	7029b179-847f-4a9c-a9d6-c667378c82e7	TypeError	user.findOne is not a function
+March 2nd, 2026 at 	 6:44 PM	162d334c-0de7-4337-8671-31c74315d5bd	Error	Cannot set headers after they are sent to the client
+March 2nd, 2026 at 	 6:47 PM	4b298c44-f8a7-4a76-b7b6-a637b44a81bb	Error	Cannot set headers after they are sent to the client
+March 2nd, 2026 at 	 6:48 PM	20e3319e-1f5b-41f9-a992-9c856bd12a81	Error	Cannot set headers after they are sent to the client
+March 2nd, 2026 at 	 6:51 PM	3482d3d2-87c1-4c99-8ffe-18038ded5196	Error	secretOrPrivateKey must have a value
+March 2nd, 2026 at 	 6:52 PM	b6a5b777-88d0-4aca-afa0-787aaa42e531	Error	secretOrPrivateKey must have a value
+March 2nd, 2026 at 	 6:53 PM	9d819526-944a-4496-a64d-7f0154aa19f2	Error	secretOrPrivateKey must have a value
+March 2nd, 2026 at 	 10:36 PM	96ca3948-5e43-48f8-9970-003640de0841	Error	secretOrPrivateKey must have a value
+March 2nd, 2026 at 	 11:08 PM	7d432246-46f2-4d1d-96a0-96930d8fe7e9	SyntaxError	Unexpected token '"', ""aswwwwwanth"" is not valid JSON
+March 2nd, 2026 at 	 11:10 PM	a35af8ef-8704-488f-9049-fb17bb366e68	Error	Can't set headers after they are sent.
+March 2nd, 2026 at 	 11:11 PM	6c4e3f3b-72d6-4cfc-a5cd-adf00661f5f5	Error	Can't set headers after they are sent.
+March 2nd, 2026 at 	 11:16 PM	2369c7b6-6509-461a-be83-9bf3907f5798	Error	Can't set headers after they are sent.
+March 2nd, 2026 at 	 11:29 PM	2bee99e5-2e5f-418c-96e5-29576925ca00	TypeError	res.sendstatus is not a function
+March 7th, 2026 at 	 5:15 PM	1f0e14e0-1267-4560-b9f4-577d1e068aec	SyntaxError	Expected ',' or '}' after property value in JSON at position 32 (line 3 column 5)
