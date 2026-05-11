@@ -12,9 +12,10 @@ const varifyJWT = async (req, res, next) => {
 
     req.user = decoded.userInfo.userName;
     req.roles = decoded.userInfo.roles;
-  });
+    req.id = decoded.userInfo.id;
 
-  next();
+    next();
+  });
 };
 
 module.exports = varifyJWT;

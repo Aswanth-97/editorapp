@@ -17,17 +17,23 @@ const handileLogin = async (req, res) => {
   const match = await bcrypt.compare(password, foundUser.password);
 
   if (match) {
-    const roles = Object.values(foundUser.roles);
+    const roles = Object.values(foundUser.roles).filter(Boolean);
 
     const accessToken = jwt.sign(
-      { userInfo: { userName: foundUser.userName, roles: roles } },
+      {
+        userInfo: {
+          userName: foundUser.userName,
+          roles: roles,
+          id: foundUser._id,
+        },
+      },
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "30s" },
     );
 
     const refreshToken = jwt.sign(
       { userInfo: { userName: userName } },
-      process.env.REFERSH_TOKEN_SECRET,
+      process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: "1d" },
     );
 
@@ -35,10 +41,13 @@ const handileLogin = async (req, res) => {
 
     const result = await foundUser.save();
 
-   
-
-    res.cookie("jwt", refreshToken, { httpOnly: true, maxAge: 900000 });
-    res.status(200).json({ accessToken: accessToken });
+    res.cookie("jwt", refreshToken, {
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000,
+      sameSite: "None",
+      secure: true,
+    });
+    res.status(200).json({ accessToken: accessToken, roles: roles });
   } else {
     res.sendStatus(404);
   }

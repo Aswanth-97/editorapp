@@ -1,6 +1,6 @@
 const varifyRoles = (...allowedRoles) => {
   return (req, res, next) => {
-    if (!req?.user) return res.sendstatus(401);
+    if (!req?.user) return res.sendStatus(401);
 
     const rolesArray = [...allowedRoles];
 
@@ -8,7 +8,7 @@ const varifyRoles = (...allowedRoles) => {
       .map((role) => rolesArray.includes(role))
       .find((val) => val === true);
 
-    if (!result) return res.sendstatus(401);
+    if (!result) return res.sendStatus(401);
 
     next();
   };

@@ -26,7 +26,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieparser());
 
-
 app.use("/register", require("./routes/api/register"));
 app.use("/login", require("./routes/api/login"));
 app.use("/refresh", require("./routes/api/refresh"));

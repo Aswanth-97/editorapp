@@ -12,7 +12,7 @@ const logger = async (message, filename) => {
 
   try {
     if (!fs.existsSync(path.join(__dirname, "..", "loggs"))) {
-      fsPromise.mkdir(path.join(__dirname, "..", "loggs"), {
+      await fsPromise.mkdir(path.join(__dirname, "..", "loggs"), {
         recursive: true,
       });
     }
@@ -27,11 +27,12 @@ const logger = async (message, filename) => {
 };
 
 const loggs = async (req, res, next) => {
+  logger(
+    `${req.url}\t${req.method}\t${req.headers["origin"]}`,
+    "eventLogger.txt",
+  );
 
-  logger(`${req.url}\t${req.method}\t${req.headers["origin"]}`, "eventLogger.txt");
-
-  next()
+  next();
 };
 
-
-module.exports={logger,loggs}
+module.exports = { logger, loggs };

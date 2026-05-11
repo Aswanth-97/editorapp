@@ -5,8 +5,8 @@ const varifyRoles = require("../../middleware/varifyRoles");
 const ROLES_LIST = require("../../config/rolleslist");
 
 router
-  .route("/text")
-  .get(texteditorController.getText)
-  .post(varifyRoles(ROLES_LIST.User), texteditorController.postText);
+  .route("/file")
+  .get(texteditorController.getFile)
+  .post(varifyRoles(ROLES_LIST.User), texteditorController.postFile);
 
 module.exports = router;
