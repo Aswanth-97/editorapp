@@ -28,6 +28,7 @@ const EditorBody = ({ handleEditorDidMount }) => {
         }}
         onChange={textCollector}
       />
+
     </main>
   );
 };

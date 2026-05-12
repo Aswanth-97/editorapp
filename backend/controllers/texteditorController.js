@@ -32,9 +32,14 @@ const postFile = async (req, res) => {
         .status(409)
         .json({ message: "file name already present in db" });
 
+    const fileType = fileName.split(".").pop();
+    const codeExtensions = ["js", "py", "java", "cpp"];
+    const editorType = codeExtensions.includes(fileType) ? "monaco" : "tiptap";
+
     const files = await file.create({
       filename: fileName,
       owner_id: foundUser_id,
+      editorType: editorType,
     });
     res.status(200).json({ message: "file added successfully", file: files });
   } catch (error) {

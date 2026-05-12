@@ -9,6 +9,11 @@ const fileSchema = new schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "text",
     },
+    editorType: {
+      type: String,
+      enum: ["monaco", "tiptap"],
+      default: "monaco",
+    },
   },
   { timestamps: true },
 );

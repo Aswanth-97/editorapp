@@ -12,7 +12,7 @@ import TextContext from "./context/Textprovider";
 const Sidebar = ({ showValue, editorRef }) => {
   const refresh = useRefresh();
   const [commitMessage, setCommitMessage] = useState({});
-  const { text, setText } = useContext(TextContext);
+  const { text, setText, textEditorType, setTextEditorType } = useContext(TextContext);
   const [files, setFiles] = useState([]);
   const [createFile, setCreateFile] = useState(false);
   const [fileName, setFileName] = useState("");
@@ -39,9 +39,9 @@ const Sidebar = ({ showValue, editorRef }) => {
   const folderHndler = (e) => {
     let cleanName = fileName.trim();
 
-    if (!cleanName.endsWith(".txt")) {
-      cleanName += ".txt";
-    }
+    // if (!cleanName.endsWith(".txt")) {
+    //   cleanName += ".txt";
+    // }
 
     const postTextName = async () => {
       try {
@@ -62,10 +62,12 @@ const Sidebar = ({ showValue, editorRef }) => {
     postTextName();
   };
 
-  const handleCommitForm = (fileName) => {
+  const handleCommitForm = (fileName, editorType) => {
     showCommitfrm === fileName
       ? setShowCommitfrm(null)
       : setShowCommitfrm(fileName);
+
+    setTextEditorType(editorType);
   };
 
   return (
@@ -76,7 +78,7 @@ const Sidebar = ({ showValue, editorRef }) => {
             <button
               className="px-4 cursor-pointer text-green-600  dark:text-teal-500"
               onClick={() => {
-                setCreateFile(true);
+                createFile ? setCreateFile(false) : setCreateFile(true);
                 setShowCommitfrm(false);
               }}
             >
@@ -115,7 +117,9 @@ const Sidebar = ({ showValue, editorRef }) => {
                 <div className="flex flex-row items-center m-2 w-full justify-between">
                   <div
                     className=" flex flex-row items-center justify-between"
-                    onClick={() => handleCommitForm(file.filename)}
+                    onClick={() =>
+                      handleCommitForm(file.filename, file.editorType)
+                    }
                   >
                     <IoDocumentTextSharp size={30} />
                     {file.filename}
