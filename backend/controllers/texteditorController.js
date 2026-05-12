@@ -33,7 +33,7 @@ const postFile = async (req, res) => {
         .json({ message: "file name already present in db" });
 
     const fileType = fileName.split(".").pop();
-    const codeExtensions = ["js", "py", "java", "cpp"];
+    const codeExtensions = ["js"];
     const editorType = codeExtensions.includes(fileType) ? "monaco" : "tiptap";
 
     const files = await file.create({
