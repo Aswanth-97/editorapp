@@ -12,27 +12,41 @@ import TextContext from "./context/Textprovider";
 const Sidebar = ({ showValue, editorRef }) => {
   const refresh = useRefresh();
   const [commitMessage, setCommitMessage] = useState({});
-  const { text, setText, textEditorType, setTextEditorType } = useContext(TextContext);
+  const { text, setTextEditorType, tiptapText } = useContext(TextContext);
   const [files, setFiles] = useState([]);
   const [createFile, setCreateFile] = useState(false);
   const [fileName, setFileName] = useState("");
   const [showCommitfrm, setShowCommitfrm] = useState(null);
   const privateAxios = usePrivateAxios();
 
+  console.log(tiptapText);
+  
+
   useEffect(() => {
-    privateAxios.get("/get/file").then((res) => {
+    privateAxios.get("/editor/file").then((res) => {
       console.log(res.data.data);
       setFiles(res.data.data);
     });
   }, []);
 
-  const handleCommit = async (e, fileId) => {
+  const handleCommit = async (e, fileId, editorType) => {
     e.preventDefault();
 
+    console.log(fileId);
+
+    const commitMsg = commitMessage[fileId];
+
+    const content = editorType == "monaco" ? text : tiptapText;
+
     try {
-      console.log(text);
+      privateAxios.post("/editor/commit", {
+        fileId: fileId,
+        content: content,
+        commitMsg: commitMsg,
+      });
     } catch (error) {
-      console.error(error);
+      console.log(error.response.data.message);
+      
     }
   };
 
@@ -45,7 +59,7 @@ const Sidebar = ({ showValue, editorRef }) => {
 
     const postTextName = async () => {
       try {
-        const res = await privateAxios.post("/get/file", {
+        const res = await privateAxios.post("/editor/file", {
           fileName: cleanName,
         });
         // setFiles([...files, cleanName]);
@@ -117,7 +131,7 @@ const Sidebar = ({ showValue, editorRef }) => {
                 <div className="flex flex-row items-center m-2 w-full justify-between">
                   <div
                     className=" flex flex-row items-center justify-between"
-                    onClick={() =>
+                    onClick={(e) =>
                       handleCommitForm(file.filename, file.editorType)
                     }
                   >
@@ -145,7 +159,7 @@ const Sidebar = ({ showValue, editorRef }) => {
                     <form
                       className="flex-col flex "
                       onSubmit={(e) => {
-                        handleCommit(e, file._id);
+                        handleCommit(e, file._id, file.editorType);
                       }}
                     >
                       <input

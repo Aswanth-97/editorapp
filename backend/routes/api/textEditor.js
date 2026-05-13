@@ -9,4 +9,8 @@ router
   .get(texteditorController.getFile)
   .post(varifyRoles(ROLES_LIST.User), texteditorController.postFile);
 
+router
+  .route("/commit")
+  .post(varifyRoles(ROLES_LIST.User), texteditorController.saveContent);
+
 module.exports = router;

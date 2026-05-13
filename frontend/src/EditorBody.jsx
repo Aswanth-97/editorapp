@@ -6,8 +6,6 @@ const EditorBody = ({ handleEditorDidMount }) => {
   const { text, setText } = useContext(TextContext);
 
   const textCollector = (value, e) => {
-    console.log("form editbodyyyyy", value);
-
     setText(value);
   };
 
@@ -28,7 +26,6 @@ const EditorBody = ({ handleEditorDidMount }) => {
         }}
         onChange={textCollector}
       />
-
     </main>
   );
 };

@@ -30,7 +30,7 @@ app.use("/register", require("./routes/api/register"));
 app.use("/login", require("./routes/api/login"));
 app.use("/refresh", require("./routes/api/refresh"));
 app.use(varifyJWT);
-app.use("/get", require("./routes/api/textEditor"));
+app.use("/editor", require("./routes/api/textEditor"));
 
 app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, "views", "404.html"));

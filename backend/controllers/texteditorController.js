@@ -1,6 +1,7 @@
 const file = require("../model/fileschema");
 const users = require("../model/users");
-const user = require("../model/users");
+const text = require("../model/textSchema");
+const { version } = require("mongoose");
 
 const getFile = async (req, res) => {
   try {
@@ -48,4 +49,52 @@ const postFile = async (req, res) => {
   }
 };
 
-module.exports = { getFile, postFile };
+const saveContent = async (req, res) => {
+  try {
+    const { fileId, content, commitMsg } = req.body;
+
+    if (!fileId || !content || !commitMsg) {
+      return res
+        .status(400)
+        .json({ message: "fileId,content,commitMessage required" });
+    }
+
+    const foundFile = await file.findOne({ _id: fileId });
+
+    if (!foundFile) res.status(404).json({ message: "File Not Found" });
+
+    const foundUser = foundFile.owner_id;
+    if (!foundUser) res.status(404).json({ message: "User Not Found" });
+
+    const latestCommit = await text.findOne({ fileId }).sort({ version: -1 });
+    const newVersion = latestCommit ? latestCommit.version + 1 : 1;
+
+    const duplicateContent = await text.findOne({
+      fileId: fileId,
+      "content.text": content.text,
+    });
+
+    if (duplicateContent) {
+      return res.status(400).json({ message: "Can not save same Content" });
+    }
+
+    const newText = await text.create({
+      fileId: fileId,
+      content: content,
+      message: commitMsg,
+      createdBy: foundUser,
+      version: newVersion,
+    });
+
+    foundFile.latestCommit = newText._id;
+    await foundFile.save();
+
+    return res.status(200).json({ message: "commit sucessful", data: newText });
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({ message: "server error", Error: error });
+  }
+};
+
+module.exports = { getFile, postFile, saveContent };

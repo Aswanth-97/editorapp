@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import { FloatingMenu, BubbleMenu } from "@tiptap/react/menus";
 import StarterKit from "@tiptap/starter-kit";
@@ -6,10 +6,12 @@ import { TextStyle } from "@tiptap/extension-text-style";
 import { Color } from "@tiptap/extension-color";
 import Highlight from "@tiptap/extension-highlight";
 import "./tiptap-style/tiptap.css";
+import TextContext from "./context/Textprovider";
 
 const Tiptap = () => {
   const [isEditable, setIsEditable] = useState(true);
   const [showMenu, setShowMenu] = useState(true);
+  const { setTiptapText } = useContext(TextContext);
 
   const editor = useEditor({
     extensions: [
@@ -20,6 +22,9 @@ const Tiptap = () => {
         multicolor: true,
       }),
     ],
+    onUpdate: ({ editor }) => {
+      setTiptapText({ json: editor.getJSON(), text: editor.getText() });
+    },
     content: "<p>Hello Worldppppp!</p>", // initial content
     autofocus: "end",
   });
@@ -35,8 +40,6 @@ const Tiptap = () => {
   const isBold = editor.isActive("bold");
   const isItalic = editor.isActive("italic");
   const isStrike = editor.isActive("strike");
-
-  console.log(editor.getAttributes("textStyle"));
 
   return (
     <div className="w-full border rounded-md p-4 bg-white overflow-y-auto">
@@ -56,7 +59,7 @@ const Tiptap = () => {
       </div>
       <EditorContent editor={editor} className="ProseMirror text-black" />
 
-      {editor && (
+      {editor && showMenu && (
         <FloatingMenu editor={editor}>
           <div className="floating-menu" data-testid="floating-menu">
             <button

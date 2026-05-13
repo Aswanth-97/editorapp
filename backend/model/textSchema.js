@@ -1,15 +1,16 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 const textSchema = new schema({
-  fileId: { type: mongoose.Schema.ObjectId, ref: file, required: true },
+  fileId: { type: mongoose.Schema.ObjectId, ref: "file", required: true },
 
   content: {
-    type: String,
+    type: Object,
     required: true,
   },
   message: {
     type: String,
     required: true,
+    
   },
 
   createdBy: {
@@ -24,6 +25,7 @@ const textSchema = new schema({
   version: {
     type: Number,
     required: true,
+    default: 0,
   },
 });
 
